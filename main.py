@@ -34,6 +34,7 @@ cv2.line(photo, (0, photo.shape[0] // 2), (photo.shape[0], photo.shape[1] // 2),
 
 cv2.circle(photo, (photo.shape[1] // 2, photo.shape[0] // 2), 50, (103, 1, 1), -1)
 
+cv2.putText(photo, "test Text", (110 , 150), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
 
 cv2.imshow('photo', photo)
 cv2.waitKey(0)
