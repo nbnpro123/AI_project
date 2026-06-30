@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 
+
 # # Обработка фото в 2bit разрешении
 # img = cv2.imread(r"D:\Proekts\pythonProject\images\1.jpg")
 # img = cv2.resize(img,(img.shape[1] // 2, img.shape[0] // 2 ))
@@ -36,9 +37,9 @@ import numpy as np
 #
 # cv2.imshow('photo', photo)
 # cv2.waitKey(0)
-
-
-
+#
+#
+#
 # # Подготовка видео к анализу
 # cap = cv2.VideoCapture(r"D:\Proekts\pythonProject\videos\video1.mp4")
 #
@@ -92,19 +93,62 @@ import numpy as np
 #
 # cv2.imshow("Image", img)
 # cv2.waitKey(0)
+#
+#
+#
+#
+# img = cv2.imread(r"D:\Proekts\pythonProject\images\1.jpg")
+# new_img = np.zeros(img.shape, np.uint8)
+#
+#
+# img = cv2.resize(img,(img.shape[1] // 2, img.shape[0] // 2 ))
+# img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+# img = cv2.GaussianBlur(img, (5, 5), 0)
+#
+# img = cv2.Canny(img, 100, 140)
+#
+# con, hir = cv2.findContours(img, cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)
+# cv2.drawContours(new_img, con, -1, (203, 148, 214), 2)
+# print(con)
+#
+# cv2.imshow("Image", new_img)
+# cv2.waitKey(0)
+#
+#
+# img = cv2.imread(r"D:\Proekts\pythonProject\images\1.jpg")
+# img = cv2.resize(img,(img.shape[1] // 2, img.shape[0] // 2 ))
+#
+#
+# r, g, b = cv2.split(img)
+#
+# img = cv2.merge((r,g, b))
+#
+#
+#
+# cv2.imshow("Image", img)
+#
+#
+# img = np.zeros((350, 350), np.uint8)
+# circle = cv2.circle(img.copy(), (0, 0), 80, 255, -1)
+# square = cv2.rectangle(img.copy(), (25, 25), (250, 350), 255, -1)
+#
+# img = bitwise_and(circle, square)
+#
+#
+# cv2.imshow('circle', img)
+# cv2.waitKey(0)
+#
+#
+
+img = cv2.imread(r"D:\Proekts\pythonProject\images\4.jpg")
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+faces = cv2.CascadeClassifier("faces.xml")
+result = faces.detectMultiScale(gray, scaleFactor=3, minNeighbors=1)
+
+for (x, y, w, h) in result:
+    cv2.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0), 2)
 
 
-
-
-
-img = cv2.imread(r"D:\Proekts\pythonProject\images\1.jpg")
-
-cv2.imshow("Image", img)
+cv2.imshow("img", img)
 cv2.waitKey(0)
-
-
-
-
-
-
-
